@@ -1,0 +1,158 @@
+Les quatres fichiers qui suivent contiennent toutes mes bidouilles en maths.
+
+dot_et_autres
+  Déjà il y aura du ménage à faire parce qu'à la base c'était un fichier main. On
+  trouve ici tout mon travail sur le dot product, les systèmes de coordonnées, etc.
+    (MATHS_BASE) - Dot_Product: projète un vecteur sur un autre.
+    (MATHS_BASE) - Determinant: ""retrouver la définition"".
+    (MATHS_BASE) - Dot_Normalized: renvoie le dot product de deux vecteurs normalisés.
+    (GRILLE) - Local_To_World: place un point par rapport à une origine qui n'est pas celle de l'écran.
+    (GRILLE) - New_Coord_System: crée un nouveau système de coordonnées.
+    (GRILLE) - Convert_Point: place un point selon le système de coordonnées par défaut ou un système de coordonnées custom.
+    (GRILLE) - Return_Local_Coords: récupère les coordonnées d'un point par rapport à son système de coordonnées.
+    (MATHS_BASE) - Is_Looking_For: booléen qui informe si un vecteur 'regarde' dans une certaine direction ou non.
+    (DETECTION_DE_COLLISIONS) - Line_Intersect: calcule le point d'intersection entre deux droites.
+    (DETECTION_DE_COLLISIONS) - Line_Vs_Segment: calcule le point d'intersection entre un segment et une droite.
+    (DETECTION_DE_COLLISIONS) - Segment_Intersect: calcul le point d'intersecion entre deux segments.
+    (MATHS_BASE) - Vecteur_Normal: calcul la normale d'une droite.
+    (MATHS_BASE) - Reflect_Vector: calcul le rebond d'un vecteur sur une surface.
+    (MATHS_BASE) - Difract_Vector: calcul la diffraction d'un vecteur traversant une surface.
+
+maths
+  Fichier qui contient toutes sortes de fonctions mathématiques. Divers calcul de distance,
+  de tweening/easing qui sont mal rangées, un peu de trigo, différentes types de mise à l'échelle
+  d'un nombre, un peu de détection de collision, des calculs d'arrondis, de la génération de nombres
+  aléatoires et des courbes de béziers.
+    (MATHS_BASE) - Milieu: calcul le point milieu de deux points.
+    (MATHS_BASE) - Distance: calcul de la distance entre deux points (pythagore).
+    (MATHS_BASE) - Dist_Vectors: pareil qu'au dessus mais avec des vecteurs en paramètres.
+    (MATHS_BASE) - Dist_Manhattan: calcul la somme des deux côtés de l'angle droit d'un triangle rectangle.
+    (MATHS_BASE) - Dist_K: fonction Distance avec des coefficient.
+    (MATHS_BASE) - Dist_Infinie: pareil qu'au dessus mais avec le coefficient global qui tend vers l'infini.
+    (TWEEN/EASING) - Tween_Power: fonction générale de calcul de tweening.
+    (MATHS_BASE) - Arc_Tan_2: calcul de l'opposé de la tengeante en prenant en compte le cas où x=0.
+    (MATHS_BASE) - Norm_Number: adapte une valeur à une échelle.
+    (MATHS_BASE) - Lerp: contraire de Norm_Number (à préciser).
+    (MATHS_BASE) - Map: prend une valeur sur une échelle et la converti proportionnellement sur une autre échelle.
+    (MATHS_BASE) - Clamp: bloque une valeur entre deux autres valeurs.
+    (DETECTION_DE_COLLISIONS) - Point_Vs_Circle: retourne si un point se trouve ou non à l'intérieur d'un cercle.
+    (DETECTION_DE_COLLISIONS) - Circle_Collision: retourne si deux cercle se superposent.
+    (MATHS_BASE) - In_Range: retourne si une valeur est comprise entre deux autres valeurs.
+    (DETECTION_DE_COLLISIONS) - Point_In_Rect: retourne si un point se trouve à l'intérieur d'un rectangle.
+    (DETECTION_DE_COLLISIONS) - Segment_Overlap: retourne si deux segment se superposent (il faudra trouver un autre nom).
+    (DETECTION_DE_COLLISIONS) - Rect_Intersect: retourne si deux rectangles se superposent.
+    (MATHS_BASE) - Deg_To_Rad: converti une valeur en degrès en une valeur en radians.
+    (MATHS_BASE) - Rad_To_Deg: converti une valeur en radians en une valeur en degrès.
+    (MATHS_BASE) - Round_To_Places: arrondir à la place voulue après la virgule.
+    (MATHS_BASE) - Round_To_Nearest: ""à revoir l'utilité"".
+    (MATHS_BASE) - Random_In_Range: crée un nombre aléatoire entre deux nombre.
+    (MATHS_BASE) - Random_Int: crée un nombre entier aléatoire ""à revoir l'utilité"".
+    (MATHS_BASE) - Random_Dist: ""à revoir l'utilité"".
+    (TWEEN/EASING) - Quadratic_Bezier: courbe de Bézier quadratique.
+    (TWEEN/EASING) - Cubic_Bezier: courbe de Bézier cubique.
+    (UTILS) - Draw_Circle: wrap de la fonction d'affichage de cercle de love2d.
+    (TWEEN/EASING) - Linear_Tween: transformation linéaire.
+    (TWEEN/EASING) - Ease_In_Quad: transformation qui ralenti avec le temps.
+    (TWEEN/EASING) - Ease_Out_Quad: transformation qui accélère avec le temps.
+    (TWEEN/EASING) - Ease_In_And_Out_Quad: transformation qui accélère au départ de sa durée et ralenti à la fin de sa durée.
+
+tween
+  Concentre toutes les équation de tweening/easing. Il faudra revoir le github avec toutes les fonctions
+  et faire des tests. Il y a des doublons avec le module maths.
+
+utils
+  Crée au départ pour stocker des fonctions utilitaires de totes sortes. Avec le temps c'est devenu le fichier
+  où j'ai stocké tout ce que j'ai fait avec coding maths. Du coup c'es un immense bordel dans lequel on trouve
+  de tout, il doit y avoir un jeu, un moteur de physique, etc...
+    (GRILLE) - Cree_Tuile: crée une tuile avec ses coordonnées et une valeur pour l'alpha de la couleur.
+    (GRILLE) - Tile_Map: crée une grille de tuile conçues avec la foncion précédente.
+    (UTILS) - Copie_Table: renvoie une copie de la table passée en paramètre.
+    (UTILS) - Table_Min_Value: renvoie la valeur minimale de la table passée en paramètre.
+    (UTILS) - Table_Max_Value: renvoie la valeur maximale de la table passée en paramètre.
+    (UTILS) - Make_2D_Mountains: génère un profil de terrain montagneux de profil en 2D.
+    (UTILS) - Point_Grossissant: point qui grossit puis reset au bout d'un certain temps.
+    (RESOLUTION_DE_COLLISIONS) - Clamp_Circle_Inside_Rect: force un cercle à rester dans les limites d'un rectangle.
+    (MOUVEMENT) - Va_Et_Vient: donne un mouvement de va et vient à un objet.
+    (MOUVEMENT) - Va_Et_Vient_Sinus: même chose mais c'est une fonction sinus qui gère le mouvement.
+    (UTILS) - Swap: fonction qui interverti les valeurs de deux variables.
+    (UTILS) - Bubble_Sort: fonction de tri à bulle.
+    (RESOLUTION_DE_COLLISIONS) - Bounce_Circle: fait rebondir un cercle contre les bords de la fenêtre.
+    (PARTICULES) - Regen_Circle: si un cercle sort de la fenêtre, il apparait sur surle bord opposé.
+    (RESOLUTION_DE_COLLISIONS) - Bounce_Rect: fait rebondir un rectangle contre les bords de la fenêtre.
+    (PARTICULES) - Regen_Rect: si un rectangle sort de la fenêtre, il apparait sur surle bord opposé.
+    (MOUVEMENT) - Move_Player_2: fonction de déplacement d'un sprite avec de la trigo.
+    (UTILS) - Draw_Bell_Curve: dessine une courbe en forme de cloche qui rempli progressivement tout l'écran.
+    (GRILLE) - Snap_Cursor_On_Grid: aimante un cercle sur les intersections entre lignes d'une grille.
+    (PARTICULE) - Create_Spring: crée une force élastique entre deux points.
+    (PARTICULE) - Spring_Force: crée une force élastique entre deux particules.
+    (RESOLUTION_DE_COLLISIONS) - Check_Edges: vérifie la position d'une particule et change sa vélocité si elle sort de l'écran.
+    (RESOLUTION_DE_COLLISIONS) - Create_A_Poly_Spring: crée un polygone dont les edges sont élastiques.
+    (UTILS) - Create_Mobile: crée un mobile relié à deux élastiques.
+    
+    -- Début jeu de tir
+      Set_Target: fonction qui paramètre la position et le rayon de la cible.
+      Shoot: fonction qui gère le tir d'une bullet.
+      Aim_Gun: fonction qui gère la rotation du canon.
+      Check_Target: vérifie si le bullet est en contact avec la cible.
+      Shoot_Game: petit jeu de tir qui contient tout ce qu'il y a au dessus.
+    -- Fin jeu de tir
+    
+    (PARTICULES) - Set_Flow_Element: crée une particule avec quelques paramètres de base (rayon, vitesse, angle).
+    (PARTICULES) - Create_Flow: fait gravier un flot de particule autour d'un opint d'ancrage.
+    (UTILS) - White_Noise_TV: affichage un bruit blanc, comme les parasites sur les anciennes TV.
+    (PARTICULES) - Explosion_Carree: crée une explosion. Les particules s'étandent sur une zone carrée autour du point d'émission.
+    (UTILS) - Display_Point_On_Circle: affiche le nombre de point voulu disposés en cercle.
+    (MATHS_BASE) - Point: crée un point (doublon de Vector).
+    (UTILS) - Include_Points_In_Table: prend des points en paramètres et renvoie une table unique les contenant tous.
+    (UTILS) - Create_1D_Table: même chose mais en prenant une table de points en paramètres.
+    (BEZIER) - Draw_Bezier: dessine une courbe de Bézier.
+    (MOUVEMENT) - Move_Point_From_A_To_B: déplace un point de manière linéaire entre deux autres points.
+    (BEZIER) - Lerp_Line: crée et affiche un segment dont chaque sommet se déplace proportionnellement chacun sur un autre segment.
+    (UTILS) - Indique_Point: affiche les coordonnées d'un point.
+    (UTILS) - Affiche_Variable: affiche le contenu d'une variable.
+    (BEZIER) - Construct_Bezier: affiche et anime une courbe de Bézier et ses info.
+    (UTILS) - Draw_Point: wrap dela fonction cercle de love2d
+    (UTILS) - Draw_Line: wrap dela fonction line de love2d
+    (UTILS) - Render_Bezier: wrap dela fonction courbe de bézier de love2d.
+    (BEZIER) - Draw_bezier_By_CP: courbe de Bézier qui passe effectivement par le troisième grâce à l'ajout d'un quatrième opint de contrôle.
+    (BEZIER) - Multicurve: crée une courbe de Bézier à partir d'un nombre indéfini de points.
+    (UTILS) - RND: wrap dela fonction random de love2d.
+    (BEZIER) - Dragable_Bezier: crée une courbe de Bézier dont on peut bouger les points de contrôle avec la souris.
+    (MOUVEMENT) - Point_To_Target: déplace un point vers le clic de la souris avec un effet d'ease out.
+    (MOUVEMENT) - Snake_Points: crée une suite de points qui suivent le déplacement du curseur de la souris.
+    (MOUVEMENT) - Ease_To: applique eun effet d'easing au déplacement d'un point.
+    (MOUVEMENT) - Point_To_Target_2: autre version de déplacement d'un opint avec un effet d'easing.
+    (MOUVEMENT) - Ease_Line: équivalent à Snake_points mais avec des lignes.
+    (MOUVEMENT) - Steering_Wheel: coordonne la rotation d'une image avec le mouvement de la souris (et un coefficient d'easing).
+    (TWEEN/EASING) - Tween: fonction générale de tweening et d'easing.
+    (UTILS) - Get_Clicked_Point: permet de vérifier si le clic de la souirs est bien sur un point.
+    (DETECTION_DE_COLLISIONS) - Line_Intersect: calcul du point d'intersection entre deux lignes.
+    (RESOLUTION_DE_COLLISIONS) - Draw_Circle_On_Intersection_Point: affiche un cercle sur le point d'intersection entre deux lignes.
+    (DETECTION_DE_COLLISIONS) - Check_Star_Collision: vérifie l'overlap entre deux polygone.
+    (UTILS) - Cree_Etoile: objet qui crée une étoile.
+    (RESOLUTION_DE_COLLISION) - Throw_Particule: projète une particule sur une ligne.
+    
+    -- De engine (ligne 1610) à (ligne 1826) --> moteur de physique.
+      tables: engine (base->position, range->rayon d'action, angle, vitesse, position du bout du bras, pinned->piont d'ancrage).
+              ronds: les différents points qui composent le mécanisme.
+              sticks: bâtons qui relient les points.
+              chat: image de chat qui servait pour l'affichage du moteur.
+      Load_Chat: charge l'image du chat.
+      Update_Engine: update de l'engine, notamment de la rotation du bras.
+      Update_Points: update de la position des points.
+      Update_Img: update de la position de l'image.
+      Constrain_Points: oblige les points à rester à l'intérieur de la fenêtre.
+      Update_Sticks: update de la position des sticks.
+      Draw_Points: affiche les points du moteur.
+      Draw_Sticks: affiche les sticks du moteur.
+      Draw_Forms: affiche les polygones du moteur.
+      Draw_Image: affiche les images du moteur.
+      Draw_Engine: affiche le moteur.
+      Physics_World: gère l'entièreté du moteur.
+    -- FIN MOTEUR PHYSIQUE
+    
+    (MOUVEMENT) - Move_Player: déplacement d'un objet avec les flèches.
+    (UTILS) - Create_Rect: crée un rectangle à partir de vertices et de lignes.
+    (MOUVEMENT) - Rotate_And_Move: bouge un objet en tenant compte de sa rotation (autre version de Move_Player_2)
+    (UTILS) - Create_Polygon: crée un polygon à base de vertices et de lignes
+    (UTILS) - Create_Poly_Points: renvoie une table de points; conçu pour créer des polygones réguliers comme un pentagone.

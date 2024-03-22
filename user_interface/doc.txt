@@ -1,0 +1,15 @@
+DOCUMENTATION DE L'UI.
+
+--[[
+                                        USER INTERFACE
+  
+  -Débugger le reset des couleurs à (1, 1, 1)
+  -Corriger le bug de position si on passe à la méthode Set_Shape un argument
+   différent de celui passé à la création du bouton.
+  -Corriger le bug d'affichage du texte dans un bouton rond.
+  -Corriger les barres de progressions ronde.
+  -Ajouter la possibilité de naviguer dans l'UI au clavier ou à la manette.
+  -Faire les tests avec des images à la place des primitives de Löve2D.
+  -Ecrire une documentation pour utiliser l'UI.
+
+]]

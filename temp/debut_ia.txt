@@ -1,0 +1,16 @@
+Les trois fichiers qui suivent contiennent toutes mes bidouilles en ia.
+
+direction
+  Fonctions qui permettent de changer la direction d'un objet.
+
+ovni
+  Comportements des ovnis dans Asteroids.
+  Dans ovni:IA
+  -> machine à état
+  check collider
+  new direction
+  hyperespace
+
+ia_pong
+  C'était des tests pour faire bouger une raquette de pong. Il va falloir
+  mettre le nez dans tout ça pour me rappeler comment ça marche.

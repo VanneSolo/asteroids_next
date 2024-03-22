@@ -1,0 +1,103 @@
+Les quatres fichiers qui suivent contiennent toutes mes bidouilles en physique.
+
+circle_vs_rect
+  Résolution des collisions entre cercle et rectangle que j'ai adapté de javidx9.
+    Check_Collision: vérifie si deux bounding box overlap.
+    math.normalize: normalisation d'un vecteur.
+    math.dist: calcul la longueur entre deux points.
+    Circle_Vs_Rect: renvoie si un cercle et rectangle overlap.
+    Move_Player: déplacement d'un objet.
+    love.load
+      rectangle, bounding box du rectangle
+      cercle, bounding box du cercle
+      variables qui vont servir au calcul de l'overlap entre le cercle et le rectangle.
+      -> current position: position actuelle du sprite. (Vecteur)
+      -> guessed position: position calculée du sprite à la prochaine frame en fonction de la vélocité. (Vecteur)
+      -> target position: current position. (Vecteur)
+      -> nearest point: maximum entre la position du rectangle et le minimum entre le guessed position et la largeur du rectangle. (Vecteur)
+      -> ray to nearest: nearest point - guessed position. (Vecteur)
+      -> magnitude: longueur de ray to nearest. (Nombre)
+      -> overlap: rayon du cercle - magnitude. (Nombre)
+    love.update
+      calculs pour détecter et résoudre les collisions entre cercle et rectangle.
+      on update current, guessed et target. On vérifie s'il y a overlap entre le cercle et le rect.
+      si oui, on update nearest point, ray to nearest, magnitude et overlap. si overlap > 0 on
+      normalise ray to nearest et on le soustrait à guessed position.
+      Il ne reste plus qu'à placer le cercle sur guessed position
+    love.draw
+      affichage.
+    Line_Intersect
+
+collider
+  Collider du jeu Asteroid crée à partir de GameDevCodeur. Il fait la gestion "administrative" entre
+  tous les game objects.
+  Collider_Astres_Bullets_Plane: appelle toutes les autres fonctions de collisions.
+  Collider_Plane_Ovni: contrôle de la collision entre le plane (joueur) et l'ovni. On défini une longueur minimale.
+                       On compare cette longueur à la distance entre la position du joueur et celle de l'ovni. Si la
+                       distance entre les deux sprites est la plus petite, alors une collision est détectée. Le joueur
+                       perd une vie, on déclenche une explosion sur son sprite et on passe son collider à true.
+  Collider_Bullet_Ovni_Plane: pareil que pour le plane ovni sauf qu'ici on contrôle la collision entre les bullets de
+                              l'ovni et le joueur.
+  Collider_Bullet_Plane_Ovni: pareil que pour le bullet plane ovni sauf que l'on inverse les rôles. 
+  Collider_Astre_Ovni: contrôle des collisions entre l'ovni et les astéroïdes.
+  Collider_Astre_Plane: contrôle des collisions entre le joueur et les astéroïdes.
+  Collider_Astre_Bullets: contrôle des collisions entre les bullets et les astéroïdes. En plus on réduit la taille de l'astéroïde,
+                          on change son nombre de points et on crée un nouvel astéroïde de la taille réduite de l'objet de base.
+                          Ainsi cela donne l'impression que l'astéroïde s'est divisé en rochers plus petits.
+
+collisions
+  Contient les algoritmes de détection et de résolution de collisions. Là aussi il y a quelques doublons
+  avec d'autres morceaux de code dans d'autres modules.
+  -- ALGOS DE DETECTION DE COLLISIONS ENTRE POINTS, LIGNES, CERCLES ET POLYGONES.
+    (DETECTION_DE_COLLISIONS) - Point_VS_Point
+    (DETECTION_DE_COLLISIONS) - Point_Vs_Circle
+    (DETECTION_DE_COLLISIONS) - Circle_Vs_Circle
+    (DETECTION_DE_COLLISIONS) - Point_Vs_Rect
+    (DETECTION_DE_COLLISIONS) - Rect_Vs_Rect
+    (DETECTION_DE_COLLISIONS) - Circle_Vs_Rect
+    (DETECTION_DE_COLLISIONS) - Point_Vs_Line
+    (DETECTION_DE_COLLISIONS) - Circle_Vs_line
+    (DETECTION_DE_COLLISIONS) - Line_Vs_Line
+    (DETECTION_DE_COLLISIONS) - Line_Vs_Rectangle
+    (DETECTION_DE_COLLISIONS) - Point_Vs_Polygon
+    (DETECTION_DE_COLLISIONS) - Circle_Vs_Polygon
+    (DETECTION_DE_COLLISIONS) - Rect_Vs_Polygone
+    (DETECTION_DE_COLLISIONS) - Line_Vs_Polygon
+    (DETECTION_DE_COLLISIONS) - Polygon_Vs_Polygon
+  -- FIN DES ALGOS DE DETECTION DE COLLISIONS ENTRE POINTS, LIGNES, CERCLES ET POLYGONES.
+  
+  (RESOLUTION_DE_COLLISIONS) - Resolve_Circle_Vs_Rect: résolution de collision cercle contre rect déjà expliqué au dessus.
+  (MOUVEMENT) - Invert_Velocity: inverse la vélocité d'un sprite.
+  
+  (MATHS_BASE) - Construct_Normal: construit les normales des côtés d'un rectangle par rapport à la vélocité de l'objet qui se déplace.
+  (RESOLUTION_DE_COLLISIONS) - Resolve_Rect_Vs_Rect: résolution de collisions entre rect alignés (non orientés) en utilisant la fonction Construct_Normal.
+                        C'était buggé, je pense que c'est en parti du au fait que je n'ai pas intégré le CCD dans l'algo.
+                        
+  (DETECTION_DE_COLLISIONS) - SAT_Overlap
+  (RESOLUTION_DE_COLLISIONS) - SAT_Resolution
+  (DETECTION_DE_COLLISIONS) - Diags_Overlap
+  (RESOLUTION_DE_COLLISIONS) - Diags_Resolution
+
+particules
+  Module qui contient un système de particule.
+  Particule
+    -- caractéristiques de base --
+    Add_Gravitation
+    Remove_Gravitation
+    Add_Spring
+    Remove_Spring
+    Spring_To
+    Handle_Spring
+    Handle_Gravitation
+    Get_Speed
+    Set_Speed
+    Get_Heading
+    Set_Heading
+    Accelerate
+    Update
+    Angle_Vers
+    Distance_Vers
+    Gravite_Autour
+    Gravite_Vers
+    Draw
+  Remove_Dead_Particule
